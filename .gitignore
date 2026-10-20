@@ -1,0 +1,7 @@
+data/raw/*.csv
+data/stream_input/
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.venv/
+venv/

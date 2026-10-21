@@ -1,6 +1,6 @@
 # Dicionário de Dados - Dataset Resultante do RA1
 
-Todos os arquivos estão em `data/processed/`, com a mesma granularidade dos originais em `data/raw/` (um arquivo por tabela; nenhuma junção foi feita - isso é escopo do RA2).
+Todos os arquivos estão em `data/processed/`, com a mesma granularidade dos originais em `data/raw/` (um arquivo por tabela; a única junção é a tradução da categoria de produto em `olist_products_dataset.csv`; as demais junções ficam para as próximas etapas).
 
 ## olist_orders_dataset.csv (99.441 linhas)
 

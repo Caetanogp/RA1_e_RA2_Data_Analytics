@@ -12,7 +12,7 @@ Esse problema é relevante porque, em um marketplace que depende de múltiplos v
 
 ## Perguntas analíticas
 
-As perguntas abaixo orientam as próximas etapas do projeto (ingestão, qualidade, preparação no RA1; transformação e resposta no RA2). Elas não são respondidas nesta entrega.
+As perguntas abaixo orientam as próximas etapas do projeto (ingestão, qualidade, preparação no RA1; transformação e análise nas etapas seguintes do projeto). Elas não são respondidas nesta entrega.
 
 1. Qual a relação entre o atraso na entrega (diferença entre data real e data estimada de entrega) e a nota de avaliação dada pelo cliente?
 2. Quais estados/regiões do Brasil apresentam maior incidência de atrasos na entrega?
@@ -22,4 +22,4 @@ As perguntas abaixo orientam as próximas etapas do projeto (ingestão, qualidad
 
 ## Fora de escopo neste RA1
 
-Responder às perguntas acima, construir indicadores, agregações de negócio, visualizações exploratórias com fins analíticos e tirar conclusões fazem parte do RA2 (Transformação e Processamento dos Dados). O RA1 entrega o dataset preparado que servirá de insumo para essa etapa.
+Responder às perguntas acima, construir indicadores, agregações de negócio, visualizações exploratórias com fins analíticos e tirar conclusões fazem parte das etapas seguintes do projeto. O RA1 entrega o dataset preparado que servirá de insumo para essa etapa.

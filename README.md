@@ -58,7 +58,7 @@ jupyter notebook notebooks/
 
 ### RA2 - streaming com Spark
 
-O notebook `notebooks/04_streaming_ra2.ipynb` grava 3 lotes de pedidos simulados numa pasta de entrada, em momentos diferentes, e o Spark os processa conforme chegam, agrupando por **janela tumbling de 10 minutos** (com *watermark* de 10 minutos). Ele lê `data/processed/` apenas para tornar a simulação coerente com os dados reais.
+O notebook `notebooks/04_streaming_ra2.ipynb` grava 3 lotes com 15 pedidos simulados (escritos à mão) numa pasta de entrada, em momentos diferentes, e o Spark os processa conforme chegam, agrupando por **janela tumbling de 10 minutos**. Ele não depende dos dados do RA1.
 
 **No Windows** o Spark exige binários do Hadoop (`winutils`). O jeito mais simples é usar o container deste repositório (Docker Desktop aberto):
 
@@ -69,7 +69,7 @@ docker run --rm -v "${PWD}:/work" -w /work/notebooks ra2-spark jupyter nbconvert
 
 No Linux/macOS (bash), troque `${PWD}` por `$PWD`. Sem Docker, basta ter Java 17+ e rodar o notebook normalmente com `jupyter notebook notebooks/`.
 
-**Como saber que deu certo:** o notebook mostra, a cada lote, a tabela das janelas atualizadas e termina com `OK: o resultado do streaming coincide com o recálculo em pandas.` (51 dos 52 registros processados; 1 é descartado de propósito pela *watermark*).
+**Como saber que deu certo:** o notebook mostra, a cada lote, a tabela das janelas e termina com `Total de pedidos nas janelas: 15 (de 15 enviados)`.
 
 O notebook `entrega_ra1_ra2.ipynb` junta o RA1 e o RA2 em um único arquivo, no formato pedido pela disciplina, e `entrega_ra1_ra2.pdf` é a sua versão em PDF. Ele é gerado a partir dos demais notebooks.
 

@@ -4,6 +4,7 @@ Projeto de dados sobre o **Brazilian E-Commerce Public Dataset by Olist**: ~99 m
 
 - **RA1 - Ingestão e preparação dos dados:** baixa os dados por código, avalia a qualidade e entrega um conjunto limpo e documentado.
 - **RA2 - Processamento em streaming:** simula a chegada de pedidos e calcula a taxa de atraso de entrega por janela de tempo com Apache Spark Structured Streaming.
+- **RA3 - Análise e Machine Learning:** estatística descritiva, gráficos e um modelo de classificação que prevê atrasos de entrega, sobre os dados reais preparados no RA1.
 
 **Equipe:** Caetano Padoin, Davi Henrique e Matheus Brehm - Data Analytics (PjBL).
 
@@ -24,6 +25,7 @@ Projeto de dados sobre o **Brazilian E-Commerce Public Dataset by Olist**: ~99 m
 │   ├── 02_avaliacao_qualidade.ipynb
 │   ├── 03_limpeza_preparacao.ipynb
 │   ├── 04_streaming_ra2.ipynb
+│   ├── 05_analise_ra3.ipynb
 │   ├── entrega_ra1_ra2.ipynb   # RA1 + RA2 em um único notebook
 │   └── entrega_ra1_ra2.pdf
 └── docs/                  # documentação do projeto (ver tabela abaixo)
@@ -73,6 +75,24 @@ No Linux/macOS (bash), troque `${PWD}` por `$PWD`. Sem Docker, basta ter Java 17
 
 O notebook `entrega_ra1_ra2.ipynb` junta o RA1 e o RA2 em um único arquivo, no formato pedido pela disciplina, e `entrega_ra1_ra2.pdf` é a sua versão em PDF. Ele é gerado a partir dos demais notebooks.
 
+### RA3 - análise e Machine Learning
+
+O notebook `notebooks/05_analise_ra3.ipynb` junta os dados de `data/processed/` em uma linha por pedido e traz, em seções numeradas: estatística descritiva, seis gráficos interpretados, análise de representatividade, um modelo de classificação (floresta aleatória) que prevê se um pedido vai atrasar e as conclusões. Ele só lê `data/processed/` (que já está no repositório) e leva cerca de 1 minuto.
+
+```bash
+pip install -r requirements.txt
+jupyter notebook notebooks/
+```
+
+Abra `05_analise_ra3.ipynb` e use *Restart & Run All*. Com Docker, na raiz do repositório:
+
+```powershell
+docker build -f docker/Dockerfile -t ra2-spark .
+docker run --rm -v "${PWD}:/work" -w /work/notebooks ra2-spark jupyter nbconvert --to notebook --execute --inplace 05_analise_ra3.ipynb
+```
+
+**Como saber que deu certo:** o notebook mostra seis gráficos, a tabela de métricas (floresta aleatória com recall 0,634 e AUC 0,757) e termina na seção de conclusões. As sementes são fixas, então os números se repetem.
+
 ## Documentação
 
 | Documento | Conteúdo |
@@ -82,7 +102,8 @@ O notebook `entrega_ra1_ra2.ipynb` junta o RA1 e o RA2 em um único arquivo, no 
 | [`docs/03_relatorio_qualidade.md`](docs/03_relatorio_qualidade.md) | Problemas de qualidade encontrados e decisões de tratamento |
 | [`docs/04_dicionario_dados.md`](docs/04_dicionario_dados.md) | Dicionário de dados do conjunto resultante |
 | [`docs/RA1_documentacao_preenchida.docx`](docs/RA1_documentacao_preenchida.docx) | Documentação completa do RA1 (formato Word da disciplina) |
+| [`docs/05_relatorio_ra3.md`](docs/05_relatorio_ra3.md) | Técnicas, resultados, interpretações e instruções de execução do RA3 |
 
 ## Escopo
 
-O RA1 cobre apenas até a preparação dos dados: sem transformações analíticas, indicadores ou conclusões de negócio. O RA2 é uma etapa à parte, de streaming sobre registros **simulados**, sem dashboards nem Kafka; as taxas que ele mostra não representam a operação real da Olist.
+O RA1 cobre apenas até a preparação dos dados: sem transformações analíticas, indicadores ou conclusões de negócio. O RA2 é uma etapa à parte, de streaming sobre registros **simulados**, sem dashboards nem Kafka; as taxas que ele mostra não representam a operação real da Olist. O RA3 é a etapa de análise: estatística descritiva, gráficos e Machine Learning sobre os dados reais preparados no RA1.
